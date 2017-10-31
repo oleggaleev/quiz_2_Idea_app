@@ -27,15 +27,6 @@ nav > a {
     padding: 8px;
 }
 
-nav > a:not(:last-child):after {
-  border-right: red 2px solid;
-}
-
-nav > .totheright {
-  text-align: right;
-}
-
-
 #fullname {
   color: black;
   font-size: 20px;
@@ -53,7 +44,8 @@ nav > .totheright {
 
 .link-text {
     text-decoration: none;
-    color: black;
+    color: blue;
+    font-family: Verdana
 }
 
 .link-text:hover {

@@ -35,7 +35,7 @@ class IdeasController < ApplicationController
 
 
   def update
-    return head :unauthorized unless can?(:update, @idea)
+    return head :unauthorized unless can?(:destroy, @idea)
 
     @idea = Idea.find params[:id]
 

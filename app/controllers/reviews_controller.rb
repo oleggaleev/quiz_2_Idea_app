@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_idea, only: [:create]
   before_action :find_review, only: [:destroy]
-  before_action :authorize_user, except: [:create]
+  before_action :authorize_user!, except: [:create]
 
   def create
     @review = @idea.reviews.build(review_params)
@@ -35,7 +35,7 @@ class ReviewsController < ApplicationController
   end
 
   def authorize_user!
-   unless can?(:manage, @idea)
+   unless can?(:manage, @review)
      flash[:alert] = "Access Denied!"
      redirect_to root_path
    end

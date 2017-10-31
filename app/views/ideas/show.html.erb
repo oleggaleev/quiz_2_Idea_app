@@ -1,15 +1,13 @@
-<p>By <%= @idea.user&.full_name %></p>
-
 <div class='container'>
+    <strong><p>By <%= @idea.user&.full_name %></p></strong>
     <h1><%= @idea.title %></h1>
     <p><%= @idea.description %></p>
-</div>
 
 
 <% if user_signed_in? && can?(:manage, @idea) %>
   <div>
-    <%= link_to 'Edit', edit_idea_path(@idea) %>
-    <%= link_to(
+    <button><%= link_to 'Edit', edit_idea_path(@idea) %></button>
+    <button><%= link_to(
         'Delete',
         idea_path(@idea),
         data: {confirm: 'Are you sure?'},
@@ -35,6 +33,8 @@
 <div class="answer-list">
   <% @idea.reviews.each do |review| %>
     <div class="answer-list-item">
+      <ul class="list-group">
+      <li class="list-group-item">
       <p><%= review.body %></p>
       <p>By <%= review.user&.full_name %></p>
       <% if can?(:destroy, review) %>
@@ -43,8 +43,10 @@
           review_path(review),
           data: {confirm: 'Are you sure?'},
           method: :delete
-        ) %>
+        ) %></li>
+      </ul>
       <% end %>
     </div>
   <% end %>
+</div>
 </div>
