@@ -1,15 +1,13 @@
-<div class='container'>
-  <ul class="list-group">
-    <% @ideas.each do |idea| %>
-        <li class="list-group-item">
-          <h3><%= link_to idea.title, idea_path(idea) %></h3>
-          <i class="fa fa-plus" aria-hidden="true"></i>
-
-          <a href="" class="show_hide">+</a>
-          <a href="" class="hide_show">-</a>
-          <p class='idea-description'><%= idea.description %><p>
-          <p class='font-weight-bold text-primary idea-description'>By <%= link_to idea.user&.full_name %></p>
-        </li>
-    <% end %>
-  <ul>
-</div>
+<% @ideas.each do |idea| %>
+  <div class='container'>
+    <i class="fa fa-plus foldable"><a href="<%= idea_path(idea) %>"  class="font link-text"><span><strong>  <%= idea.title %></strong></span></a>
+      <div class="fold hidden">
+          <div class="font ml-3">
+            <br>
+            <p><%= idea.description %></p>
+            <p><strong>By: <%= idea.user.full_name %></strong></p>
+          </div>
+        </div>
+      </i>
+  </div>
+<% end %>

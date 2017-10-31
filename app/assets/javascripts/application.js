@@ -17,23 +17,14 @@
 //= require bootstrap-sprockets
 
 
-
-$(document).ready(function(){
-        $(".idea-description").hide();
-        $(".show_hide").show();
-        $(".hide_show").hide();
-
-    $('.show_hide').click(function(){
-    $(this).parent().find('.idea-description').slideToggle();
-         $(this).parent().find(".show_hide").hide();
-        $(this).parent().find(".hide_show").show();
-    });
-
- $('.hide_show').click(function(){
-    $(this).parent().find('.idea-description').slideToggle();
-         $(this).parent().find(".show_hide").show();
-        $(this).parent().find(".hide_show").hide();
-
-    });
-
-});
+$(document).ready(function() {
+   $('.foldable').on('click', function(event) {
+       if ($(this).hasClass('fa fa-minus')) {
+           $(this).removeClass('fa fa-minus').addClass('fa fa-plus')
+           $(this).children('.fold').slideToggle()
+       } else {
+           $(this).removeClass('fa fa-plus').addClass('fa fa-minus')
+           $(this).children('.fold').slideToggle()
+       }
+   })
+})

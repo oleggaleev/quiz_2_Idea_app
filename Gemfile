@@ -34,7 +34,7 @@ gem 'faker', github: 'stympy/faker'
 gem 'bootstrap_form'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails'
-
+gem "font-awesome-rails"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
