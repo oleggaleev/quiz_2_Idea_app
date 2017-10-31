@@ -1,0 +1,50 @@
+<p>By <%= @idea.user&.full_name %></p>
+
+<div class='container'>
+    <h1><%= @idea.title %></h1>
+    <p><%= @idea.description %></p>
+</div>
+
+
+<% if user_signed_in? && can?(:manage, @idea) %>
+  <div>
+    <%= link_to 'Edit', edit_idea_path(@idea) %>
+    <%= link_to(
+        'Delete',
+        idea_path(@idea),
+        data: {confirm: 'Are you sure?'},
+        method: :delete
+      ) %></button>
+  </div>
+<% end %>
+
+<h4>Reviews</h4>
+
+<%= bootstrap_form_for [@idea, @review] do |f| %>
+  <% if @review.errors.present? %>
+    <p>
+      <%= @review.errors.full_messages.join(', ') %>
+    </p>
+  <% end %>
+  <div>
+    <%= f.text_area :body %>
+  </div>
+  <%= f.submit %>
+<% end %>
+
+<div class="answer-list">
+  <% @idea.reviews.each do |review| %>
+    <div class="answer-list-item">
+      <p><%= review.body %></p>
+      <p>By <%= review.user&.full_name %></p>
+      <% if can?(:destroy, review) %>
+        <%= link_to(
+          'Delete',
+          review_path(review),
+          data: {confirm: 'Are you sure?'},
+          method: :delete
+        ) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

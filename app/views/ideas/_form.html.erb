@@ -1,0 +1,16 @@
+<div class='container'>
+  <%= bootstrap_form_for(@idea) do |form| %>
+
+    <% if @idea.errors.present? %>
+      <p>
+        <%= @idea.errors.full_messages.join(', ') %>
+      </p>
+    <% end %>
+      <%= form.text_field :title, class:'form-control' %>
+
+      <%= form.text_area :description %>
+    <button type="submit" class="btn btn-default">
+      <%= form.submit %>
+    </button>
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+<div class='container'>
+  <ul class="list-group">
+    <% @ideas.each do |idea| %>
+        <li class="list-group-item">
+          <h3><%= link_to idea.title, idea_path(idea) %></h3>
+          <i class="fa fa-plus" aria-hidden="true"></i>
+
+          <a href="" class="show_hide">+</a>
+          <a href="" class="hide_show">-</a>
+          <p class='idea-description'><%= idea.description %><p>
+          <p class='font-weight-bold text-primary idea-description'>By <%= link_to idea.user&.full_name %></p>
+        </li>
+    <% end %>
+  <ul>
+</div>
